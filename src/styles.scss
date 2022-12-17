@@ -1,0 +1,28 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$max-width: 1440px;
+
+:root {
+  --clr-text: hsl(200, 15%, 8%);
+  --clr-background: hsl(0, 0%, 98%);
+  --clr-element: hsl(0, 0%, 100%);
+  --clr-input: hsl(0, 0%, 52%);
+  --font-family: "Nunito Sans", sans-serif;
+}
+
+.dark {
+  --clr-text: hsl(0, 0%, 100%);
+  --clr-background: hsl(207, 26%, 17%);
+  --clr-element: hsl(209, 23%, 22%);
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--clr-text);
+}
