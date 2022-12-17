@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { CountriesType } from "./helpers/Types";
+import { ApiCountriesType, CountriesType } from "./helpers/Types";
 import "./styles.scss";
 
 function App() {
@@ -7,19 +7,28 @@ function App() {
 
   const handleGetData = useCallback(async () => {
     const request = await fetch("https://restcountries.com/v3.1/all");
-    const response: CountriesType[] = await request.json();
-    setCountriesData(response);
-    // eslint-disable-next-line
+    const response: ApiCountriesType[] = await request.json();
+
+    setCountriesData(
+      response.map((country) => {
+        return {
+          flagURL: country.flags.png,
+          name: country.name.common,
+          population: country.population,
+          region: country.region,
+          capital: country.capital ? country.capital[0] : "",
+        };
+      }),
+    );
   }, []);
 
-  console.log(countriesData);
   useEffect(() => {
     handleGetData();
   }, [handleGetData]);
 
   return (
     <div>
-      Hello World!
+      {countriesData && <>Hello World!</>}
       <div className="dark-theme">elo</div>
     </div>
   );
