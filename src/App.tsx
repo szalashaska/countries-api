@@ -26,12 +26,7 @@ function App() {
     handleGetData();
   }, [handleGetData]);
 
-  return (
-    <div>
-      {countriesData && <>Hello World!</>}
-      <div className="dark-theme">elo</div>
-    </div>
-  );
+  return <div>{countriesData && countriesData.map((c) => c.name)}</div>;
 }
 
 export default App;
