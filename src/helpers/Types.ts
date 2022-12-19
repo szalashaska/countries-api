@@ -4,19 +4,19 @@ export type ApiCountriesType = {
   population: number;
   region: string;
   capital: string[] | undefined;
-  cioc: string;
+  ccn3: string;
 };
 
 export type ApiCountryType = {
   flags: { png: string };
-  name: { common: string; nativeName: { official: string } };
+  name: { common: string; nativeName: { [key: string]: { common: string } } };
   population: number;
   region: string;
   subregion: string;
   capital: string[] | undefined;
   tld: string[];
   cioc: string;
-  currencies: { [key: string]: string };
+  currencies: { [key: string]: { name: string } };
   languages: object;
   borders: string[];
 };
@@ -39,7 +39,7 @@ export type CountryType = {
   region: string;
   subregion: string;
   capital: string;
-  tld: string;
+  tld: string[];
   currencies: string;
   languages: string[];
   borderCountries: string[];
