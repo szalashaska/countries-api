@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import CountriesCard from "../components/CountriesCard";
-import Header from "../components/Header";
 import Search from "../components/Search";
 import { ApiCountriesType, CountriesType } from "../helpers/Types";
 
@@ -16,7 +15,7 @@ function Countries() {
     setCountriesData(
       response.map((country) => {
         return {
-          code: country.ccn3,
+          code: country.cca3,
           flagURL: country.flags.png,
           name: country.name.common,
           population: country.population,
@@ -34,13 +33,11 @@ function Countries() {
   return (
     <div className="page-container">
       <div className="input-container">
-        <Header />
         <Search />
       </div>
       <div className="countries-container">
         {countriesData.length > 0 &&
           countriesData.map((country) => {
-            console.log(country.code);
             return <CountriesCard country={country} key={country.code} />;
           })}
       </div>

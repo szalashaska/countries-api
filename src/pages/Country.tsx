@@ -25,7 +25,7 @@ function Country() {
           subregion: country.subregion,
           capital: country.capital ? country.capital[0] : "",
           tld: country.tld,
-          cioc: country.cioc,
+          cioc: country.cca3,
           currencies: Object.values(country.currencies)[0].name,
           languages: Object.values(country.languages),
           borders: country.borders,

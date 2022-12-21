@@ -1,3 +1,14 @@
+@mixin desktop {
+  @media screen and (min-width: 700px) {
+    @content;
+  }
+}
+
+$max-width: 1440px;
+$font-size-sm: 0.8rem;
+$font-size-normal: 1rem;
+$font-size-large: 1.2rem;
+
 *,
 *::after,
 *::before {
@@ -6,11 +17,10 @@
   box-sizing: border-box;
 }
 
-$max-width: 1440px;
-
 :root {
   --clr-text: hsl(200, 15%, 8%);
   --clr-background: hsl(0, 0%, 98%);
+  --clr-shadow: hsl(0, 0%, 92%);
   --clr-element: hsl(0, 0%, 100%);
   --clr-input: hsl(0, 0%, 52%);
   --font-family: "Nunito Sans", sans-serif;
@@ -20,9 +30,43 @@ $max-width: 1440px;
   --clr-text: hsl(0, 0%, 100%);
   --clr-background: hsl(207, 26%, 17%);
   --clr-element: hsl(209, 23%, 22%);
+  --clr-shadow: hsl(0, 0%, 98%);
 }
 
 body {
   font-family: var(--font-family);
   color: var(--clr-text);
+  font-size: $font-size-normal;
+}
+
+.header {
+  max-width: $max-width;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 0.75rem;
+  background: var(--clr-background);
+  box-shadow: 0 0;
+  box-shadow: 0px 5px 10px -8px var(--clr-text);
+
+  @include desktop {
+    width: 90%;
+  }
+  .header__name {
+    font-size: $font-size-normal;
+    font-weight: 800;
+  }
+
+  .header__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: $font-size-normal;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }

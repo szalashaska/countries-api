@@ -4,7 +4,7 @@ export type ApiCountriesType = {
   population: number;
   region: string;
   capital: string[] | undefined;
-  ccn3: string;
+  cca3: string;
 };
 
 export type ApiCountryType = {
@@ -15,7 +15,7 @@ export type ApiCountryType = {
   subregion: string;
   capital: string[] | undefined;
   tld: string[];
-  cioc: string;
+  cca3: string;
   currencies: { [key: string]: { name: string } };
   languages: object;
   borders: string[];
