@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import CountriesCard from "../components/CountriesCard";
+import Filter from "../components/Filter";
 import Search from "../components/Search";
 import { ApiCountriesType, CountriesType } from "../helpers/Types";
 
@@ -34,13 +35,14 @@ function Countries() {
     <div className="page-container">
       <div className="input-container">
         <Search />
+        <Filter />
       </div>
-      <div className="countries-container">
+      <main className="countries-container">
         {countriesData.length > 0 &&
           countriesData.map((country) => {
             return <CountriesCard country={country} key={country.code} />;
           })}
-      </div>
+      </main>
     </div>
   );
 }

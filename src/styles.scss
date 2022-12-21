@@ -4,11 +4,6 @@
   }
 }
 
-$max-width: 1440px;
-$font-size-sm: 0.8rem;
-$font-size-normal: 1rem;
-$font-size-large: 1.2rem;
-
 *,
 *::after,
 *::before {
@@ -19,12 +14,19 @@ $font-size-large: 1.2rem;
 
 :root {
   --clr-text: hsl(200, 15%, 8%);
+  --font-family: "Nunito Sans", sans-serif;
   --clr-background: hsl(0, 0%, 98%);
   --clr-shadow: hsl(0, 0%, 92%);
   --clr-element: hsl(0, 0%, 100%);
   --clr-input: hsl(0, 0%, 52%);
-  --font-family: "Nunito Sans", sans-serif;
 }
+
+$max-width: 1440px;
+$font-size-sm: 0.8rem;
+$font-size-normal: 1rem;
+$font-size-large: 1.2rem;
+$font-size-xl: 1.6rem;
+$box-shadow: 0 0 10px var(--clr-shadow);
 
 .dark {
   --clr-text: hsl(0, 0%, 100%);
@@ -36,37 +38,83 @@ $font-size-large: 1.2rem;
 body {
   font-family: var(--font-family);
   color: var(--clr-text);
+  background: var(--clr-background);
   font-size: $font-size-normal;
 }
 
 .header {
-  max-width: $max-width;
-  margin-inline: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
   padding: 2rem 0.75rem;
-  background: var(--clr-background);
-  box-shadow: 0 0;
-  box-shadow: 0px 5px 10px -8px var(--clr-text);
+  background: var(--clr-element);
+  box-shadow: 0px 5px 10px var(--clr-shadow);
 
-  @include desktop {
-    width: 90%;
-  }
-  .header__name {
-    font-size: $font-size-normal;
-    font-weight: 800;
-  }
-
-  .header__button {
+  .header__container {
+    margin-inline: auto;
+    max-width: $max-width;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-family: inherit;
-    font-weight: 600;
-    font-size: $font-size-normal;
-    background: transparent;
-    border: none;
-    cursor: pointer;
+    justify-content: space-between;
+
+    .header__name {
+      font-size: $font-size-normal;
+      font-weight: 800;
+
+      @include desktop {
+        font-size: $font-size-xl;
+      }
+    }
+
+    .header__button {
+      font-size: $font-size-normal;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: inherit;
+      font-weight: 600;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+
+      @include desktop {
+        font-size: $font-size-large;
+      }
+    }
+  }
+}
+
+.page-container {
+  margin-inline: auto;
+  max-width: $max-width;
+}
+
+.input-container {
+  padding-block: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+
+  .searchbox-container {
+    width: 80%;
+    position: relative;
+
+    .searchbox__icon {
+      position: relative;
+      left: 1rem;
+      top: 50%;
+      // transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+    }
+
+    .searchbox__input {
+      display: block;
+      width: 100%;
+      padding: 1rem 2.5rem;
+      background-color: var(--clr-element);
+      box-shadow: $box-shadow;
+      border: none;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: $font-size-normal;
+    }
   }
 }
