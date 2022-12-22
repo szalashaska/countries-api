@@ -85,36 +85,123 @@ body {
 .page-container {
   margin-inline: auto;
   max-width: $max-width;
+  padding-inline: 1rem;
 }
 
 .input-container {
   padding-block: 1.5rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
 
-  .searchbox-container {
-    width: 80%;
-    position: relative;
+  @include desktop {
+    padding-block: 2.5rem;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-    .searchbox__icon {
-      position: relative;
-      left: 1rem;
-      top: 50%;
-      // transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
+  .searchbox__input,
+  .filter__select {
+    display: block;
+    width: 100%;
+    background-color: var(--clr-element);
+    box-shadow: $box-shadow;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: $font-size-normal;
+  }
+}
+
+.searchbox-container {
+  width: 100%;
+  position: relative;
+  @include desktop {
+    max-width: 25rem;
+  }
+
+  .searchbox__icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+  }
+
+  .searchbox__input {
+    padding: 1rem 3rem;
+  }
+}
+
+.filter-container {
+  width: 75%;
+  @include desktop {
+    max-width: 12rem;
+  }
+
+  .filter__select {
+    padding: 1rem;
+
+    & option {
+      background-color: var(--clr-element);
+      font-family: var(--font-family);
+      font-size: $font-size-normal;
+    }
+  }
+}
+
+.countries-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  padding-inline: 2em;
+
+  @media screen and (min-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    padding-inline: 0;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (min-width: 1000px) {
+    gap: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .card-container {
+    text-decoration: none;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+    border-radius: 8px;
+    color: var(--clr-text);
+
+    .card__flag {
+      width: 100%;
+      aspect-ratio: 320 / 213;
     }
 
-    .searchbox__input {
-      display: block;
-      width: 100%;
-      padding: 1rem 2.5rem;
-      background-color: var(--clr-element);
-      box-shadow: $box-shadow;
-      border: none;
-      border-radius: 5px;
-      font-family: inherit;
-      font-size: $font-size-normal;
+    .card__text-wrapper {
+      padding: 1.5rem 1rem 2.5rem;
+
+      .card__text__name {
+        display: block;
+        font-size: $font-size-large;
+        margin-bottom: 0.75rem;
+      }
+      .card__text__desc {
+        font-size: $font-size-normal;
+        font-weight: 600;
+
+        margin-bottom: 0.25rem;
+
+        .card__text__val {
+          font-weight: 300;
+        }
+      }
     }
   }
 }

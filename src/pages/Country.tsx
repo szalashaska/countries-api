@@ -1,23 +1,23 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 // import { useNavigate, useParams } from "react-router-dom";
-import { ApiCountryType } from "../helpers/Types";
-
-const countryCode = "BEL";
+import { Link, useParams } from "react-router-dom";
+import { ApiCountryType, CountryType } from "../helpers/Types";
 
 function Country() {
-  // const { code } = useParams();
+  const { code } = useParams();
+  const [countryData, setCountryData] = useState<CountryType[]>([]);
   // const navigate = useNavigate();
 
-  const handleGetCountry = useCallback(async () => {
+  const handleGetCountry = useCallback(async (countryCode: string) => {
     const request = await fetch(
       `https://restcountries.com/v3.1/alpha/${countryCode}`,
     );
     const response: ApiCountryType[] = await request.json();
-    // eslint-disable-next-line
-    console.log(
+    setCountryData(
       response.map((country) => {
         return {
-          flags: country.flags.png,
+          code: country.cca3,
+          flagURL: country.flags.png,
           name: country.name.common,
           nativeName: Object.values(country.name.nativeName)[0].common,
           population: country.population,
@@ -25,20 +25,28 @@ function Country() {
           subregion: country.subregion,
           capital: country.capital ? country.capital[0] : "",
           tld: country.tld,
-          cioc: country.cca3,
           currencies: Object.values(country.currencies)[0].name,
           languages: Object.values(country.languages),
-          borders: country.borders,
+          borderCountries: country.borders,
         };
       }),
     );
   }, []);
 
   useEffect(() => {
-    handleGetCountry();
-  }, [handleGetCountry]);
+    if (code) {
+      handleGetCountry(code);
+    }
+  }, [handleGetCountry, code]);
 
-  return <div>Country</div>;
+  return (
+    <div className="page-container">
+      <Link className="button" to="/">
+        Back
+      </Link>
+      {countryData.length > 0 && <>hi</>}
+    </div>
+  );
 }
 
 export default Country;
