@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 // import { useNavigate, useParams } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
+import CountryCard from "../components/CountryCard";
 import { ApiCountryType, CountryType } from "../helpers/Types";
+import LeftArrow from "../assets/left.svg";
 
 function Country() {
   const { code } = useParams();
@@ -41,10 +43,13 @@ function Country() {
 
   return (
     <div className="page-container">
-      <Link className="button" to="/">
-        Back
-      </Link>
-      {countryData.length > 0 && <>hi</>}
+      <div className="container">
+        <Link className="button flex" to="/">
+          <img src={LeftArrow} alt="" />
+          Back
+        </Link>
+      </div>
+      {countryData.length > 0 && <CountryCard country={countryData} />}
     </div>
   );
 }
