@@ -14,7 +14,7 @@ import {
   CountryType,
 } from "../helpers/Types";
 
-const BASE_URL = "https://restcountries.com/v3.1/all";
+const BASE_URL = "https://restcountries.com/v3.1/";
 
 const CountriesContext = createContext<CountriesContextType>({
   countriesData: [],
@@ -33,8 +33,10 @@ export function CountriesProvider({ children }: Props) {
   const [error, setError] = useState<string>("");
 
   const handleGetCountries = useCallback(async () => {
+    const endpoint: string = "all";
+    const URL = `${BASE_URL}${endpoint}`;
     try {
-      const request = await fetch(BASE_URL);
+      const request = await fetch(URL);
       const response: ApiCountriesType[] = await request.json();
 
       if (request.ok) {
@@ -58,11 +60,11 @@ export function CountriesProvider({ children }: Props) {
 
   const getCountry = async (countryCode: string) => {
     let countryData: CountryType[] = [];
+    const endpoint: string = "alpha/";
+    const URL = `${BASE_URL}${endpoint}${countryCode}`;
 
     try {
-      const request = await fetch(
-        `https://restcountries.com/v3.1/alpha/${countryCode}`,
-      );
+      const request = await fetch(URL);
       const response: ApiCountryType[] = await request.json();
 
       if (request.ok) {

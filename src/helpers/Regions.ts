@@ -1,2 +1,2 @@
-const regionList = ["Africa", "America", "Asia", "Europe", "Oceania"];
+const regionList = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
 export default regionList;

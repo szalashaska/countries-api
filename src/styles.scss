@@ -89,13 +89,13 @@ body {
 }
 
 .input-container {
-  padding-block: 1.5rem;
+  padding-block: 1.75rem;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
 
   @include desktop {
-    padding-block: 2.5rem;
+    padding-block: 2.75rem;
     align-items: center;
     justify-content: space-between;
   }
@@ -140,9 +140,8 @@ body {
 
   .filter-container {
     width: 75%;
-
     transition: box-shadow 0.3s;
-
+    position: relative;
     &:hover {
       box-shadow: 0 0 10px 10px var(--clr-shadow);
     }
@@ -153,12 +152,23 @@ body {
 
     .filter__select {
       padding: 1rem;
+      font-family: var(--font-family);
 
       & option {
         background-color: var(--clr-element);
-        font-family: var(--font-family);
-        font-size: $font-size-normal;
+        font-size: $font-size-large;
       }
+    }
+    .filter-clear {
+      padding: 0.5rem;
+      position: absolute;
+      background: transparent;
+      border: none;
+      color: red;
+      font-family: inherit;
+      top: 100%;
+      right: 0;
+      cursor: pointer;
     }
   }
 }
@@ -262,6 +272,7 @@ body {
     width: 100%;
     aspect-ratio: 320 / 213;
     max-width: 500px;
+    box-shadow: 0 0 10px 10px var(--clr-shadow);
 
     @include desktop {
       max-width: 575px;

@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useContext, useState } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
 import CountryCard from "../components/CountryCard";
 import { CountryType } from "../helpers/Types";
@@ -10,7 +9,6 @@ function Country() {
   const { code } = useParams();
   const { getCountry } = useContext(CountriesContext);
   const [countryData, setCountryData] = useState<CountryType[]>([]);
-  // const navigate = useNavigate();
 
   const handleGetCountry = useCallback(
     async (countryCode: string) => {
