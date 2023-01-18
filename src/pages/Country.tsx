@@ -1,39 +1,24 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useContext, useState } from "react";
 // import { useNavigate, useParams } from "react-router-dom";
 import { Link, useParams } from "react-router-dom";
 import CountryCard from "../components/CountryCard";
-import { ApiCountryType, CountryType } from "../helpers/Types";
+import { CountryType } from "../helpers/Types";
 import LeftArrow from "../assets/left.svg";
+import CountriesContext from "../contexts/CountriesContext";
 
 function Country() {
   const { code } = useParams();
+  const { getCountry } = useContext(CountriesContext);
   const [countryData, setCountryData] = useState<CountryType[]>([]);
   // const navigate = useNavigate();
 
-  const handleGetCountry = useCallback(async (countryCode: string) => {
-    const request = await fetch(
-      `https://restcountries.com/v3.1/alpha/${countryCode}`,
-    );
-    const response: ApiCountryType[] = await request.json();
-    setCountryData(
-      response.map((country) => {
-        return {
-          code: country.cca3,
-          flagURL: country.flags.png,
-          name: country.name.common,
-          nativeName: Object.values(country.name.nativeName)[0].common,
-          population: country.population,
-          region: country.region,
-          subregion: country.subregion,
-          capital: country.capital ? country.capital[0] : "",
-          tld: country.tld,
-          currencies: Object.values(country.currencies)[0].name,
-          languages: Object.values(country.languages),
-          borderCountries: country.borders,
-        };
-      }),
-    );
-  }, []);
+  const handleGetCountry = useCallback(
+    async (countryCode: string) => {
+      const country = await getCountry(countryCode);
+      if (country) setCountryData(country);
+    },
+    [getCountry],
+  );
 
   useEffect(() => {
     if (code) {

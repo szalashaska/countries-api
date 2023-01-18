@@ -44,3 +44,9 @@ export type CountryType = {
   languages: string[];
   borderCountries: string[];
 };
+
+export type CountriesContextType = {
+  countriesData: CountriesType[];
+  error: string;
+  getCountry: (countryCode: string) => Promise<CountryType[]> | void;
+};

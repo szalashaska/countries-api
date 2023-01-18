@@ -1,35 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useContext } from "react";
 import CountriesCard from "../components/CountriesCard";
 import Filter from "../components/Filter";
 import Search from "../components/Search";
-import { ApiCountriesType, CountriesType } from "../helpers/Types";
+import CountriesContext from "../contexts/CountriesContext";
 
 function Countries() {
-  const [countriesData, setCountriesData] = useState<CountriesType[]>([]);
-
-  const handleGetCountries = useCallback(async () => {
-    const request = await fetch("https://restcountries.com/v3.1/all");
-    const response: ApiCountriesType[] = await request.json();
-    // eslint-disable-next-line
-    console.log(response);
-
-    setCountriesData(
-      response.map((country) => {
-        return {
-          code: country.cca3,
-          flagURL: country.flags.png,
-          name: country.name.common,
-          population: country.population,
-          region: country.region,
-          capital: country.capital ? country.capital[0] : "",
-        };
-      }),
-    );
-  }, []);
-
-  useEffect(() => {
-    handleGetCountries();
-  }, [handleGetCountries]);
+  const { countriesData } = useContext(CountriesContext);
 
   return (
     <div className="page-container">
