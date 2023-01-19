@@ -6,6 +6,10 @@
 
 REST Countries API with color theme switcher - created with React, using TypeScript and Sass. This is a solution to Frontend Mentor challenge. Responsive design, mobile first.
 
+## Live version
+
+You can check live version on [Here](https://countries-api-ebon.vercel.app/).
+
 ## Technologies
 
 - React
