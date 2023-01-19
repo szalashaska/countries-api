@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import SearchIco from "../assets/search.svg";
+import { ReactComponent as Searchy } from "../assets/search.svg";
 
 type Props = {
   setSearch: Dispatch<SetStateAction<string>>;
@@ -14,7 +14,7 @@ function Search({ setSearch }: Props) {
 
   return (
     <div className="searchbox-container">
-      <img className="searchbox__icon" src={SearchIco} alt="" />
+      <Searchy className="searchbox__icon" />
       <input
         className="searchbox__input"
         type="text"

@@ -5,7 +5,7 @@ import Search from "../components/Search";
 import CountriesContext from "../contexts/CountriesContext";
 
 function Countries() {
-  const { countriesData } = useContext(CountriesContext);
+  const { countriesData, error } = useContext(CountriesContext);
   const [search, setSearch] = useState<string>("");
   const [filter, setFilter] = useState<string>("");
 
@@ -17,6 +17,7 @@ function Countries() {
         <Search setSearch={setSearch} />
         <Filter setFilter={setFilter} />
       </div>
+      {error && <div>{error}</div>}
       <main className="countries-container">
         {search || filter
           ? // When search query or filter was provided

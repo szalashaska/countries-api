@@ -4,9 +4,25 @@
 
 ## Welcome! 👋
 
-Thanks for checking out this front-end coding challenge.
+REST Countries API with color theme switcher - created with React, using TypeScript and Sass. This is a solution to Frontend Mentor challenge. Responsive design, mobile first.
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Technologies
+
+- React
+- TypeScript
+- Sass
+
+To maintain best practices I used eslint and husky.
+
+## Setup
+
+To run this project, download this repository, open its directory, download packages and run server:
+
+```
+npm install
+...
+npm start
+```
 
 ## The challenge
 

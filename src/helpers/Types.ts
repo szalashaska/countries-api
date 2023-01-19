@@ -50,3 +50,8 @@ export type CountriesContextType = {
   error: string;
   getCountry: (countryCode: string) => Promise<CountryType[]> | void;
 };
+
+export type ThemeContextType = {
+  theme: string;
+  handleThemeToggle: () => void;
+};
