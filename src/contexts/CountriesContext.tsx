@@ -33,6 +33,7 @@ export function CountriesProvider({ children }: Props) {
   const [error, setError] = useState<string>("");
 
   const handleGetCountries = useCallback(async () => {
+    setError("");
     const endpoint: string = "all";
     const URL = `${BASE_URL}${endpoint}`;
     try {
@@ -59,6 +60,7 @@ export function CountriesProvider({ children }: Props) {
   }, []);
 
   const getCountry = async (countryCode: string) => {
+    setError("");
     let countryData: CountryType[] = [];
     const endpoint: string = "alpha/";
     const URL = `${BASE_URL}${endpoint}${countryCode}`;
